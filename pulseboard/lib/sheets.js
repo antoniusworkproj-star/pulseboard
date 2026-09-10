@@ -76,7 +76,12 @@ async function getTaskSheet() {
 
   if (!sheet) {
     sheet = await doc.addSheet({ title: SHEET_TITLE, headerValues: HEADERS });
-  } else if (!sheet.headerValues || sheet.headerValues.length === 0) {
+  }
+
+  try {
+    await sheet.loadHeaderRow();
+  } catch (err) {
+    // Sheet ada tapi baris header belum ada sama sekali -> buat manual
     await sheet.setHeaderRow(HEADERS);
   }
 
