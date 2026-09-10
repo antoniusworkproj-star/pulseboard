@@ -25,10 +25,33 @@ function getEnv(name) {
   return value;
 }
 
+function normalizePrivateKey(raw) {
+  let key = raw.trim();
+
+  // Kalau tanda kutip pembungkus ikut ke-copy paste ke Vercel, buang.
+  if (
+    (key.startsWith('"') && key.endsWith('"')) ||
+    (key.startsWith("'") && key.endsWith("'"))
+  ) {
+    key = key.slice(1, -1).trim();
+  }
+
+  // Vercel/`.env` menyimpan newline sebagai literal \n (dua karakter),
+  // ubah kembali jadi newline sungguhan. Kalau sudah newline asli, ini no-op.
+  key = key.replace(/\\n/g, "\n");
+
+  return key;
+}
+
 function getAuth() {
   const email = getEnv("GOOGLE_SERVICE_ACCOUNT_EMAIL");
-  // Vercel/`.env` menyimpan newline sebagai literal \n, jadi perlu diubah kembali
-  const key = getEnv("GOOGLE_PRIVATE_KEY").replace(/\\n/g, "\n");
+  const key = normalizePrivateKey(getEnv("GOOGLE_PRIVATE_KEY"));
+
+  if (!key.includes("BEGIN PRIVATE KEY")) {
+    throw new Error(
+      "GOOGLE_PRIVATE_KEY tampak tidak lengkap/salah format. Pastikan berisi seluruh teks mulai dari -----BEGIN PRIVATE KEY----- sampai -----END PRIVATE KEY-----."
+    );
+  }
 
   return new JWT({
     email,
@@ -77,7 +100,6 @@ export async function listTasks() {
   const sheet = await getTaskSheet();
   const rows = await sheet.getRows();
   return rows.map(rowToTask).sort((a, b) => {
-    // Belum selesai dulu, lalu urutkan berdasarkan deadline terdekat
     if (a.status !== b.status) return a.status === "done" ? 1 : -1;
     if (!a.deadline) return 1;
     if (!b.deadline) return -1;
