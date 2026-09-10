@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #08090F;
+  color: #E7E9F5;
+  font-family: var(--font-jetbrains), monospace;
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255, 46, 126, 0.10), transparent),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(0, 240, 255, 0.08), transparent);
+  background-size: 36px 36px, 36px 36px, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+}
+
+::selection {
+  background: #FF2E7E;
+  color: #08090F;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #10121C;
+}
+::-webkit-scrollbar-thumb {
+  background: #242840;
+  border: 2px solid #10121C;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a4066;
+}
+
+:focus-visible {
+  outline: 2px solid #00F0FF;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.clip-panel {
+  clip-path: polygon(
+    0 12px,
+    12px 0,
+    100% 0,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    0 100%
+  );
+}
+
+.clip-tag {
+  clip-path: polygon(6px 0, 100% 0, 100% 100%, 0 100%, 0 6px);
+}
+
+@keyframes flicker-in {
+  0% {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  60% {
+    opacity: 1;
+  }
+  62% {
+    opacity: 0.4;
+  }
+  64% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-flicker-in {
+  animation: flicker-in 0.7s ease-out both;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.scanline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 240, 255, 0.05),
+    transparent
+  );
+  animation: scan 6s linear infinite;
+}
