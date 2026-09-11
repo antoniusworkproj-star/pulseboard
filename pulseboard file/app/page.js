@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import Header from "@/components/Header";
-import StatsBar from "@/components/StatsBar";
+import Sidebar from "@/components/Sidebar";
 import TaskList from "@/components/TaskList";
 import TaskForm from "@/components/TaskForm";
 
@@ -63,7 +62,6 @@ export default function Home() {
       });
       if (!res.ok) throw new Error();
     } catch {
-      // rollback kalau gagal
       setTasks((prev) =>
         prev.map((t) => (t.id === task.id ? { ...t, status: task.status } : t))
       );
@@ -89,34 +87,31 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen pb-24">
-      <Header onNewTask={() => setFormOpen(true)} />
+    <div className="min-h-screen lg:flex">
+      <Sidebar tasks={tasks} onNewTask={() => setFormOpen(true)} />
 
-      <div className="mx-auto max-w-6xl px-6 py-8">
-        {error && (
-          <div className="mb-6 border border-urgency-critical/50 bg-urgency-critical/10 px-4 py-3 font-mono text-sm text-urgency-critical">
-            ! {error}
-          </div>
-        )}
-
-        {loading ? (
-          <div className="border border-void-line px-6 py-14 text-center font-mono text-sm text-ink-faint">
-            &gt; menghubungkan ke google sheets...
-          </div>
-        ) : (
-          <>
-            <div className="mb-8">
-              <StatsBar tasks={tasks} />
+      <main className="flex-1 px-6 py-8 lg:px-10 lg:py-10">
+        <div className="mx-auto max-w-3xl">
+          {error && (
+            <div className="mb-6 border border-urgency-critical/50 bg-urgency-critical/10 px-4 py-3 font-mono text-sm text-urgency-critical">
+              ! {error}
             </div>
+          )}
+
+          {loading ? (
+            <div className="border border-void-line px-6 py-14 text-center font-mono text-sm text-ink-faint">
+              &gt; menghubungkan ke google sheets...
+            </div>
+          ) : (
             <TaskList
               tasks={tasks}
               onToggleDone={handleToggleDone}
               onDelete={handleDelete}
               busyId={busyId}
             />
-          </>
-        )}
-      </div>
+          )}
+        </div>
+      </main>
 
       <TaskForm
         open={formOpen}
@@ -124,6 +119,6 @@ export default function Home() {
         onSubmit={handleCreate}
         submitting={submitting}
       />
-    </main>
+    </div>
   );
 }

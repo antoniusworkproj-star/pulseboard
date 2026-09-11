@@ -16,22 +16,25 @@ export default function StatsBar({ tasks }) {
 
   const stats = [
     { label: "TOTAL TUGAS", value: total, accent: "text-ink" },
-    { label: "BERJALAN", value: active, accent: "text-cyan-glow" },
+    { label: "BERJALAN", value: active, accent: "text-violet-glow" },
     { label: "SELESAI", value: done, accent: "text-urgency-low" },
     { label: "TERLAMBAT", value: overdue, accent: "text-urgency-critical" },
     { label: "KRITIS", value: critical, accent: "text-urgency-high" },
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-px border border-void-line bg-void-line sm:grid-cols-5">
+    <div className="flex flex-col gap-px bg-void-line border border-void-line">
       {stats.map((s) => (
-        <div key={s.label} className="bg-void-panel px-4 py-3">
-          <div className={`font-display text-2xl font-bold ${s.accent}`}>
-            {String(s.value).padStart(2, "0")}
-          </div>
-          <div className="font-mono text-[10px] tracking-wider text-ink-faint">
+        <div
+          key={s.label}
+          className="flex items-baseline justify-between bg-void-panel px-4 py-2.5"
+        >
+          <span className="font-mono text-[10px] tracking-wider text-ink-faint">
             {s.label}
-          </div>
+          </span>
+          <span className={`font-display text-xl font-bold ${s.accent}`}>
+            {String(s.value).padStart(2, "0")}
+          </span>
         </div>
       ))}
     </div>

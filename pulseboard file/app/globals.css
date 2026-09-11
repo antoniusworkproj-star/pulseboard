@@ -17,21 +17,21 @@ body {
 
 body {
   margin: 0;
-  background-color: #08090F;
-  color: #E7E9F5;
-  font-family: var(--font-jetbrains), monospace;
+  background-color: #0B0714;
+  color: #E9E7F7;
+  font-family: var(--font-space-mono), monospace;
   background-image:
-    linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
-    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255, 46, 126, 0.10), transparent),
-    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(0, 240, 255, 0.08), transparent);
+    linear-gradient(rgba(167, 139, 250, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(167, 139, 250, 0.06) 1px, transparent 1px),
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(56, 189, 248, 0.12), transparent),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(167, 139, 250, 0.14), transparent);
   background-size: 36px 36px, 36px 36px, 100% 100%, 100% 100%;
   background-attachment: fixed;
 }
 
 ::selection {
-  background: #FF2E7E;
-  color: #08090F;
+  background: #A78BFA;
+  color: #0B0714;
 }
 
 ::-webkit-scrollbar {
@@ -39,15 +39,15 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #10121C;
+  background: #140F24;
 }
 ::-webkit-scrollbar-thumb {
-  background: #242840;
-  border: 2px solid #10121C;
+  background: #332856;
+  border: 2px solid #140F24;
   border-radius: 0px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a4066;
+  background: #4a3d7a;
 }
 
 :focus-visible {
@@ -129,7 +129,7 @@ body {
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(0, 240, 255, 0.05),
+    rgba(167, 139, 250, 0.06),
     transparent
   );
   animation: scan 6s linear infinite;

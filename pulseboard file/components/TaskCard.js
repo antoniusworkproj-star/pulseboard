@@ -37,7 +37,7 @@ export default function TaskCard({ task, onToggleDone, onDelete, busy }) {
         className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center border transition-colors ${
           done
             ? "border-urgency-low bg-urgency-low/20 text-urgency-low"
-            : "border-ink-faint text-transparent hover:border-cyan-glow"
+            : "border-ink-faint text-transparent hover:border-violet-glow"
         }`}
       >
         {done && (
@@ -81,7 +81,7 @@ export default function TaskCard({ task, onToggleDone, onDelete, busy }) {
         onClick={() => onDelete(task)}
         disabled={busy}
         aria-label="Hapus tugas"
-        className="shrink-0 self-start text-ink-faint opacity-0 transition-opacity hover:text-magenta-glow group-hover:opacity-100"
+        className="shrink-0 self-start text-ink-faint opacity-0 transition-opacity hover:text-azure-glow group-hover:opacity-100"
       >
         <svg viewBox="0 0 20 20" className="h-4 w-4 fill-current">
           <path d="M7 3h6l1 1h4v2H2V4h4l1-1Zm-2 5h10l-1 10H6L5 8Z" />

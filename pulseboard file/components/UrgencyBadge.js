@@ -10,7 +10,7 @@ export default function UrgencyBadge({ urgency = "medium" }) {
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-mono font-medium tracking-wide ring-1 ${cfg.ring} ${cfg.text} bg-void-raised/60 clip-tag`}
+      className={`inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-mono font-bold tracking-wide ring-1 ${cfg.ring} ${cfg.text} bg-void-raised/60 clip-tag`}
     >
       <span className={`h-1.5 w-1.5 ${cfg.dot} shadow-[0_0_6px_currentColor]`} />
       {cfg.label}

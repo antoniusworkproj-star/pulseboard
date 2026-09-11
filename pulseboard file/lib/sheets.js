@@ -105,6 +105,7 @@ export async function listTasks() {
   const sheet = await getTaskSheet();
   const rows = await sheet.getRows();
   return rows.map(rowToTask).sort((a, b) => {
+    // Belum selesai dulu, lalu urutkan berdasarkan deadline terdekat
     if (a.status !== b.status) return a.status === "done" ? 1 : -1;
     if (!a.deadline) return 1;
     if (!b.deadline) return -1;

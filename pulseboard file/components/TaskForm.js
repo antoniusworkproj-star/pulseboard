@@ -44,14 +44,14 @@ export default function TaskForm({ open, onClose, onSubmit, submitting }) {
         onClick={onClose}
         className="absolute inset-0 bg-black/70 backdrop-blur-sm"
       />
-      <div className="animate-flicker-in relative flex h-full w-full max-w-md flex-col border-l border-cyan-glow/30 bg-void-panel shadow-glowCyan">
+      <div className="animate-flicker-in relative flex h-full w-full max-w-md flex-col border-l border-violet-glow/30 bg-void-panel shadow-glowViolet">
         <div className="flex items-center justify-between border-b border-void-line px-6 py-5">
           <h2 className="font-display text-xl font-bold text-ink">
             TUGAS BARU
           </h2>
           <button
             onClick={onClose}
-            className="text-ink-faint hover:text-cyan-glow"
+            className="text-ink-faint hover:text-violet-glow"
             aria-label="Tutup"
           >
             <svg viewBox="0 0 20 20" className="h-5 w-5 fill-current">
@@ -70,7 +70,7 @@ export default function TaskForm({ open, onClose, onSubmit, submitting }) {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="mis. Kirim laporan mingguan"
-              className="w-full border border-void-line bg-void-raised px-3 py-2.5 font-mono text-sm text-ink outline-none focus:border-cyan-glow"
+              className="w-full border border-void-line bg-void-raised px-3 py-2.5 font-mono text-sm text-ink outline-none focus:border-violet-glow"
             />
           </div>
 
@@ -83,7 +83,7 @@ export default function TaskForm({ open, onClose, onSubmit, submitting }) {
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Detail tambahan (opsional)"
               rows={3}
-              className="w-full resize-none border border-void-line bg-void-raised px-3 py-2.5 font-mono text-sm text-ink outline-none focus:border-cyan-glow"
+              className="w-full resize-none border border-void-line bg-void-raised px-3 py-2.5 font-mono text-sm text-ink outline-none focus:border-violet-glow"
             />
           </div>
 
@@ -95,7 +95,7 @@ export default function TaskForm({ open, onClose, onSubmit, submitting }) {
               type="date"
               value={deadline}
               onChange={(e) => setDeadline(e.target.value)}
-              className="w-full border border-void-line bg-void-raised px-3 py-2.5 font-mono text-sm text-ink outline-none focus:border-cyan-glow [color-scheme:dark]"
+              className="w-full border border-void-line bg-void-raised px-3 py-2.5 font-mono text-sm text-ink outline-none focus:border-violet-glow [color-scheme:dark]"
             />
           </div>
 
@@ -141,7 +141,7 @@ export default function TaskForm({ open, onClose, onSubmit, submitting }) {
             <button
               type="submit"
               disabled={submitting}
-              className="flex-1 border border-cyan-glow/60 bg-cyan-glow/10 py-2.5 font-display text-sm font-semibold text-cyan-glow shadow-glowCyan transition-colors hover:bg-cyan-glow/20 disabled:opacity-50"
+              className="flex-1 border border-violet-glow/60 bg-violet-glow/10 py-2.5 font-display text-sm font-semibold text-violet-glow shadow-glowViolet transition-colors hover:bg-violet-glow/20 disabled:opacity-50"
             >
               {submitting ? "MENYIMPAN..." : "SIMPAN TUGAS"}
             </button>

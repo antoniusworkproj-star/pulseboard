@@ -1,28 +1,31 @@
-import { Rajdhani, JetBrains_Mono } from "next/font/google";
+import { Chakra_Petch, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const rajdhani = Rajdhani({
+const chakraPetch = Chakra_Petch({
   subsets: ["latin"],
   weight: ["500", "600", "700"],
-  variable: "--font-rajdhani",
+  variable: "--font-chakra",
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const spaceMono = Space_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-jetbrains",
+  weight: ["400", "700"],
+  variable: "--font-space-mono",
   display: "swap",
 });
 
 export const metadata = {
-  title: "NOCTURNE // Work Log",
+  title: "ANTZ // DIARIUM",
   description: "Jurnal pekerjaan bertema cyberpunk dengan penyimpanan Google Sheets.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className={`${rajdhani.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="id"
+      className={`${chakraPetch.variable} ${spaceMono.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

@@ -1,4 +1,4 @@
-# NOCTURNE // Work Log
+# ANTZ // DIARIUM
 
 Jurnal pekerjaan bertema cyberpunk. Dibangun dengan Next.js (App Router), disimpan
 secara persisten ke **Google Sheets** lewat Service Account, siap deploy ke **Vercel**.

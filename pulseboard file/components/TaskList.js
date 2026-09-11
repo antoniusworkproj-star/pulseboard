@@ -27,7 +27,7 @@ export default function TaskList({ tasks, onToggleDone, onDelete, busyId }) {
             onClick={() => setFilter(f.id)}
             className={`px-4 py-2 font-display text-sm font-semibold tracking-wide transition-colors ${
               filter === f.id
-                ? "border-b-2 border-cyan-glow text-cyan-glow"
+                ? "border-b-2 border-violet-glow text-violet-glow"
                 : "text-ink-faint hover:text-ink-dim"
             }`}
           >
